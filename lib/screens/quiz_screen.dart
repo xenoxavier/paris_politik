@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '/models/questions.dart';
-import '/screens/result_screen.dart';
+import '/screens/result_screen.dart';  // Import the ResultScreen
 import '/widgets/answer_card.dart';
 import '/widgets/next_button.dart';
 
@@ -50,7 +50,7 @@ class _QuizScreenState extends State<QuizScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Quiz App'),
+        title: const Text('Leben in Deutschland'),
       ),
       body: Padding(
         padding: const EdgeInsets.all(24.0),
@@ -99,7 +99,18 @@ class _QuizScreenState extends State<QuizScreen> {
                 Expanded(
                   child: RectangularButton(
                     onPressed: selectedAnswerIndices[questionIndex] != null
-                        ? goToNextQuestion
+                        ? () {
+                            // If it's the last question, navigate to ResultScreen
+                            if (isLastQuestion) {
+                              Navigator.of(context).pushReplacement(
+                                MaterialPageRoute(
+                                  builder: (_) => ResultScreen(score: score),
+                                ),
+                              );
+                            } else {
+                              goToNextQuestion();
+                            }
+                          }
                         : null,
                     label: isLastQuestion ? 'Finish' : 'Next',
                     color: isLastQuestion ? Colors.green : Colors.orange,

@@ -40,7 +40,6 @@ class AnswerCard extends StatelessWidget {
       child: selectedAnswerIndex != null
           // if one option is chosen
           ? Container(
-              height: 70,
               padding: const EdgeInsets.all(16.0),
               decoration: BoxDecoration(
                 color: Colors.white10,
@@ -61,6 +60,8 @@ class AnswerCard extends StatelessWidget {
                       style: const TextStyle(
                         fontSize: 16,
                       ),
+                      softWrap: true, // Allow wrapping of text
+                      overflow: TextOverflow.visible, // Ensure text expands freely
                     ),
                   ),
                   const SizedBox(height: 10),
@@ -74,7 +75,6 @@ class AnswerCard extends StatelessWidget {
             )
           // If no option is selected
           : Container(
-              height: 70,
               padding: const EdgeInsets.all(16.0),
               decoration: BoxDecoration(
                 color: Colors.white10,
@@ -91,6 +91,8 @@ class AnswerCard extends StatelessWidget {
                       style: const TextStyle(
                         fontSize: 16,
                       ),
+                      softWrap: true, // Allow wrapping of text
+                      overflow: TextOverflow.visible, // Ensure text expands freely
                     ),
                   ),
                 ],
